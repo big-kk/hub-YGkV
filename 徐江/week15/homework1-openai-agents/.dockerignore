@@ -1,0 +1,11 @@
+# 不进入 Docker 镜像的内容
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+.git/
+.gitignore
+*.md
+docs/

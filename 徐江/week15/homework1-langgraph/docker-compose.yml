@@ -1,0 +1,20 @@
+# 用法：
+#   docker compose up --build -d     # 构建并后台启动
+#   docker compose logs -f           # 查看日志
+#   docker compose down              # 停止并删除容器
+# 启动后浏览器访问 http://localhost:8501
+services:
+  app:
+    build: .
+    image: homework1-langgraph:latest
+    container_name: homework1-langgraph
+    ports:
+      - "8000:8000"   # FastAPI 后端
+      - "8501:8501"   # Streamlit 前端
+    environment:
+      - EMOTION_LLM_MODE=mock
+      # ---- 切换到 DeepSeek 真实模型时，取消下面注释并填写 key ----
+      # - EMOTION_LLM_MODE=real
+      # - DEEPSEEK_API_KEY=sk-你的key
+      # - DEEPSEEK_MODEL=deepseek-chat
+    restart: unless-stopped
